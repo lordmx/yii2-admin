@@ -17,7 +17,7 @@ use dee\angular\NgView;
         </div>
     </div>
     <div ng-if="!!statusText" style="padding: 30px;">
-        <alert type="error" close="closeAlert()" dismiss-on-timeout="3000">{{statusText}}</alert>
+        <uib-alert type="error" close="closeAlert()" dismiss-on-timeout="3000">{{statusText}}</uib-alert>
     </div>
     <form class="form-horizontal">
         <div class="box-body">

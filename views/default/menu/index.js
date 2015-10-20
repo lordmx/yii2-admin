@@ -1,7 +1,7 @@
 var $location = $injector.get('$location');
 var search = $location.search();
 var $filter = $injector.get('$filter');
-var $modal = $injector.get('$modal');
+var $modal = $injector.get('$uibModal');
 
 $scope.rows = [];
 $scope.q = '';

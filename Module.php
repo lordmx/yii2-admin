@@ -17,6 +17,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
     public $idField = 'id';
     public $usernameField = 'username';
     public $layout = 'main';
+    public $routes = [];
 
     /**
      * @inheritdoc
@@ -92,5 +93,36 @@ class Module extends \yii\base\Module implements BootstrapInterface
             return true;
         }
         return false;
+    }
+
+    /**
+     * @param $route
+     * @return bool
+     */
+    public function isRouteVisible($route)
+    {
+        if (isset($this->routes[$route]) && $this->routes[$route] === false) {
+            return false;
+        }
+        return true;
+    }
+
+    public function getHeaderMenus()
+    {
+        $routes = [
+            'assignment' => Yii::t('rbac-admin', 'Assignment'),
+            'role'       => Yii::t('rbac-admin', 'Role'),
+            'permission' => Yii::t('rbac-admin', 'Permission'),
+            'rule'       => Yii::t('rbac-admin', 'Rule'),
+            'route'      => Yii::t('rbac-admin', 'Route'),
+            'menu'       => Yii::t('rbac-admin', 'Menu'),
+        ];
+        $headersMenu = [];
+        foreach($routes as $route => $header) {
+            if ($this->isRouteVisible($route)) {
+                $headersMenu['/' . $route] = $header;
+            }
+        }
+        return $headersMenu;
     }
 }

@@ -24,8 +24,8 @@ use dee\angular\NgView;
                 </div>
                 <div class="col-md-6">
                     <div style="padding: 30px;">
-                        <alert ng-repeat="alert in alerts" type="{{alert.type}}" dismiss-on-timeout="{{alert.time}}"
-                               close="closeAlert($index)">{{alert.msg}}</alert>
+                        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" dismiss-on-timeout="{{alert.time}}"
+                               close="closeAlert($index)">{{alert.msg}}</uib-alert>
                     </div>
                 </div>
             </div>

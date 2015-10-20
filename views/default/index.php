@@ -1,11 +1,14 @@
 <?php
 
 use dee\angular\NgView;
+use mdm\admin\Module;
 use yii\web\View;
 use yii\helpers\Url;
 
 /* @var $this View */
 $this->title= Yii::t('rbac-admin', 'RBAC Manager');
+/** @var Module $module */
+$module = $this->context->module;
 ?>
 <div ng-app="dAdmin">
     <ul class="nav nav-tabs">
@@ -26,21 +29,25 @@ $this->title= Yii::t('rbac-admin', 'RBAC Manager');
                 'view' => 'assignment/index',
                 'js' => 'assignment/index.js',
                 'injection' => ['Assignment'],
+                'visible' => $module->isRouteVisible('assignment'),
             ],
             '/assignment/:id' => [
                 'view' => 'assignment/view',
                 'js' => 'assignment/view.js',
                 'injection' => ['Assignment'],
+                'visible' => $module->isRouteVisible('assignment'),
             ],
             '/role' => [
                 'view' => 'role/index',
                 'js' => 'role/index.js',
                 'injection' => ['Item'],
+                'visible' => $module->isRouteVisible('role'),
             ],
             '/role/:id*' => [
                 'view' => 'role/view',
                 'js' => 'role/view.js',
                 'injection' => ['Item'],
+                'visible' => $module->isRouteVisible('role'),
             ],
             '/role/form' => [              // modal
                 'visible' => false,
@@ -52,16 +59,19 @@ $this->title= Yii::t('rbac-admin', 'RBAC Manager');
                 'view' => 'permission/index',
                 'js' => 'permission/index.js',
                 'injection' => ['Item'],
+                'visible' => $module->isRouteVisible('permission'),
             ],
             '/permission/:id*' => [
                 'view' => 'permission/view',
                 'js' => 'permission/view.js',
                 'injection' => ['Item'],
+                'visible' => $module->isRouteVisible('permission'),
             ],
             '/rule' => [
                 'view' => 'rule/index',
                 'js' => 'rule/index.js',
                 'injection' => ['Rule'],
+                'visible' => $module->isRouteVisible('rule'),
             ],
             '/rule/form' => [              // modal
                 'visible' => false,
@@ -79,6 +89,7 @@ $this->title= Yii::t('rbac-admin', 'RBAC Manager');
                 'view' => 'route/index',
                 'js' => 'route/index.js',
                 'injection' => ['Route'],
+                'visible' => $module->isRouteVisible('route'),
             ],
             '/route/form' => [              // modal
                 'visible' => false,
@@ -90,6 +101,7 @@ $this->title= Yii::t('rbac-admin', 'RBAC Manager');
                 'view' => 'menu/index',
                 'js' => 'menu/index.js',
                 'injection' => ['Menu'],
+                'visible' => $module->isRouteVisible('menu'),
             ],
             '/menu/form' => [               // modal
                 'visible' => false,
@@ -108,14 +120,7 @@ $this->title= Yii::t('rbac-admin', 'RBAC Manager');
         'useNgApp' => false,
         'clientOptions' => [
             'currentUrl' => rtrim(Url::to(['']), '/'),
-            'headerMenus' => [
-                '/assignment' => Yii::t('rbac-admin', 'Assignment'),
-                '/role' => Yii::t('rbac-admin', 'Role'),
-                '/permission' => Yii::t('rbac-admin', 'Permission'),
-                '/rule' => Yii::t('rbac-admin', 'Rule'),
-                '/route' => Yii::t('rbac-admin', 'Route'),
-                '/menu' => Yii::t('rbac-admin', 'Menu'),
-            ],
+            'headerMenus' => $module->getHeaderMenus(),
         ]
     ]);
     ?>

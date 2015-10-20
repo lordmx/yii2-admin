@@ -40,11 +40,11 @@ use dee\angular\NgView;
                     </tr>
                 </tbody>
             </table>
-            <pagination total-items="provider.totalItems" ng-model="provider.page"
+            <uib-pagination total-items="provider.totalItems" ng-model="provider.page"
                         max-size="3" items-per-page="provider.itemPerPage"
                         ng-change="provider.paging()" direction-links="false"
                         first-text="&laquo;" last-text="&raquo;"
-                        class="pagination-sm" boundary-links="true"></pagination>
+                        class="pagination-sm" boundary-links="true"></uib-pagination>
         </div>
     </div>
 </div>

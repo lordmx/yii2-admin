@@ -10,8 +10,8 @@ use dee\angular\NgView;
         <h3 class="box-title"><?= Yii::t('rbac-admin', 'Menu')?></h3>
     </div>
     <div class="box-body">
-        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"
-               dismiss-on-timeout="{{alert.timeout}}">{{alert.msg}}</alert>
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"
+               dismiss-on-timeout="{{alert.timeout}}">{{alert.msg}}</uib-alert>
         <table class="table">
             <thead>
                 <tr>
@@ -56,11 +56,11 @@ use dee\angular\NgView;
                     </tr>
                 </tbody>
             </table>
-            <pagination total-items="filtered.length" ng-model="provider.page"
+            <uib-pagination total-items="filtered.length" ng-model="provider.page"
                         max-size="3" items-per-page="provider.itemPerPage"
                         ng-change="provider.paging()" direction-links="false"
                         first-text="&laquo;" last-text="&raquo;"
-                        class="pagination-sm" boundary-links="true"></pagination>
+                        class="pagination-sm" boundary-links="true"></uib-pagination>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 var $location = $injector.get('$location');
 var search = $location.search();
 var $filter = $injector.get('$filter');
-var $modal = $injector.get('$modal');
+var $modal = $injector.get('$uibModal');
 
 $scope.rows = [];
 $scope.q = '';
@@ -47,7 +47,8 @@ $scope.openModal = function () {
 $scope.deleteItem = function (item) {
     if (confirm('Are you sure you want to delete?')) {
         Item.remove({id: item.name}, {}, function () {
-            addAlert('info', 'Role deleted');
+            query();
+            //addAlert('info', 'Role deleted');
         }, function (r) {
             addAlert('error', r.statusText);
         });

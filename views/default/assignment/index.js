@@ -6,12 +6,13 @@ $scope.q = '';
 var onSearch = false;
 var panding = false;
 
-query = function () {
+var query = function (params) {
     onSearch = true;
-    Assignment.query({
-        q:$scope.q,
-        expand: 'assignments',
-    }, function (rows, headerCallback) {
+    var query = angular.merge({
+        q: $scope.q,
+        expand: 'assignments'
+    }, params);
+    Assignment.query(query, function (rows, headerCallback) {
         $pageInfo(headerCallback, $scope.provider);
         $scope.rows = rows;
         onSearch = false;
@@ -24,13 +25,13 @@ query = function () {
             $scope.search();
         }
     });
-}
+};
 query();
 
 // data provider
 $scope.provider = {
     paging: function () {
-        query();
+        query({page: this.page});
     }
 };
 
@@ -41,4 +42,4 @@ $scope.search = function(){
     }else{
         panding = true;
     }
-}
+};

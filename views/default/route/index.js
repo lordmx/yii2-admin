@@ -2,7 +2,7 @@ var $location = $injector.get('$location');
 var $routeParams = $injector.get('$routeParams');
 var $route = $injector.get('$route');
 var $filter = $injector.get('$filter');
-var $modal = $injector.get('$modal');
+var $modal = $injector.get('$uibModal');
 
 $scope.paramId = $routeParams.id;
 
