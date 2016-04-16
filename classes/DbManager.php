@@ -642,7 +642,7 @@ class DbManager extends \yii\rbac\DbManager
      * Load data. If avaliable in memory, get from memory
      * If no, get from cache. If no avaliable, get from database.
      */
-    private function loadAssignments($userId)
+    protected function loadAssignments($userId)
     {
         if (!isset($this->_assignments[$userId]) && !empty($userId)) {
             $query = (new Query)
